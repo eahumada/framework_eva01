@@ -4,7 +4,7 @@ include 'plantilla.top.php';
 ?>
 <body>
   <h1>Login</h1>
-  <form class="form-signin" method="GET" action="{{ route('record') }}">
+  <form class="form-signin" method="GET" action="record.php">
         <!-- logo -->
         <div class="container">
             <div class="row justify-content-center">
