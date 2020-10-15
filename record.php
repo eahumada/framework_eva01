@@ -55,8 +55,14 @@ encuentra (Suponga 3), y descripción, cantidad, y precio venta.</p>
             <div class="form-group row">
               <label class="col-md-4 control-label" for="categoria">CATEGORIA:</label>  
               <div class="col-md-4">
-              <input id="categoria" name="categoria" type="text" placeholder="Categoria del producto" class="form-control input-md" required="">
-              <span class="help-block">Categoria del producto</span>  
+                <select id="categoria" name="categoria" class="selectpicker" required="">
+                  <option value="">Seleccione categoria</option>
+                  <option value="1">Categoria 1</option>
+                  <option value="2">Categoria 2</option>
+                  <option value="3">Categoria 3</option>
+                </select>
+                <br>       
+                <span class="help-block">Categoria del producto</span>  
               </div>
             </div>
 
@@ -64,8 +70,14 @@ encuentra (Suponga 3), y descripción, cantidad, y precio venta.</p>
             <div class="form-group row">
               <label class="col-md-4 control-label" for="sucursal">SUCURSAL:</label>  
               <div class="col-md-4">
-              <input id="sucursal" name="sucursal" type="text" placeholder="Sucursal de producto" class="form-control input-md">
-              <span class="help-block">Sucursal en la que se encuentra del producto</span>  
+                <select id="sucursal" name="sucursal" class="selectpicker" required="">
+                  <option value="">Seleccione sucursal</option>
+                  <option value="1">Sucursal 1</option>
+                  <option value="2">Sucursal 2</option>
+                  <option value="3">Sucursal 3</option>
+                </select>
+                <br>       
+                <span class="help-block">Sucursal en la que se encuentra del producto</span>  
               </div>
             </div>
 
