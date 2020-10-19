@@ -1,12 +1,14 @@
 <?php
-print "<!-- Bottom -->";
-include 'plantilla.top.php';
+echo "<!-- Top -->";
+require_once 'view/plantillas/top.php';
 ?>
-<body>
-  <h1>Dar de baja Producto</h1>
-  <p>Permite dar de baja un producto con la opcion de eliminarlo</p>
-</body>
 
+<div>
+  <h1>Registro Producto</h1>
+  <p>Registrar un producto con los siguientes datos, id auto incrementable, código
+único del producto, nombre del producto, categoría, sucursal en la que se
+encuentra (Suponga 3), y descripción, cantidad, y precio venta.</p>
+</div>
 <div class="row">
   <div class="col-12">
       <div class="card">
@@ -16,26 +18,17 @@ include 'plantilla.top.php';
           <!-- /.card-header -->
           <div class="card-body table-responsive p-10">
 
-          <form class="form-horizontal">
+          <form class="form-horizontal" onsubmit="return validaCampos(event)" method="POST" action="?path=record&metodo=grabar">
             <fieldset>
 
             <!-- Form Name -->
-            <legend>Formulario de Supresion de Producto</legend>
-
-            <!-- Text input-->
-            <div class="form-group row">
-              <label class="col-md-4 control-label" for="id">ID:</label>  
-              <div class="col-md-4">
-              <input id="id" name="id" type="text" placeholder="id auto incrementable" class="form-control input-md" required="">
-              <span class="help-block">Id auto incrementable</span>  
-              </div>
-            </div>
+            <legend>Formulario de Ingreso del Producto</legend>
 
             <!-- Text input-->
             <div class="form-group row">
               <label class="col-md-4 control-label" for="textinput">CODIGO:</label>  
               <div class="col-md-4">
-              <input id="textinput" name="textinput" type="text" placeholder="Código único del producto" class="form-control input-md" required="">
+              <input id="codigo" name="codigo" type="text" placeholder="Código único del producto" class="form-control input-md" required="">
               <span class="help-block">Código único del producto</span>  
               </div>
             </div>
@@ -44,7 +37,7 @@ include 'plantilla.top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="textinput">NOMBRE:</label>  
               <div class="col-md-4">
-              <input id="textinput" name="textinput" type="text" placeholder="Nombre del producto" class="form-control input-md" required="">
+              <input id="nombre" name="nombre" type="text" placeholder="Nombre del producto" class="form-control input-md" required="">
               <span class="help-block">Nombre del producto</span>  
               </div>
             </div>
@@ -53,8 +46,14 @@ include 'plantilla.top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="categoria">CATEGORIA:</label>  
               <div class="col-md-4">
-              <input id="categoria" name="categoria" type="text" placeholder="Categoria del producto" class="form-control input-md" required="">
-              <span class="help-block">Categoria del producto</span>  
+                <select id="categoria" name="categoria" class="selectpicker">
+                    <option value=" ">Seleccione categoria</option>
+                    <?php
+                        foreach ($categorias as $row) {
+                            echo '<option value='.$row['id_categoria'].'> '.$row['nombre_categoria'].' </option>';
+                        }
+                    ?>
+                </select>
               </div>
             </div>
 
@@ -62,8 +61,14 @@ include 'plantilla.top.php';
             <div class="form-group row">
               <label class="col-md-4 control-label" for="sucursal">SUCURSAL:</label>  
               <div class="col-md-4">
-              <input id="sucursal" name="sucursal" type="text" placeholder="Sucursal de producto" class="form-control input-md">
-              <span class="help-block">Sucursal en la que se encuentra del producto</span>  
+                <select id="sucursal" name="sucursal" class="selectpicker">
+                  <option value=" ">Seleccione sucursal</option>
+                  <?php
+                      foreach ($sucursales as $row) {
+                          echo '<option value='.$row['id_sucursal'].'> '.$row['nombre_sucursal'].' </option>';
+                      }
+                  ?>
+                </select>                
               </div>
             </div>
 
@@ -96,9 +101,8 @@ include 'plantilla.top.php';
 
             <div class="form-group row justify-content-center h-100">
                 <div class="col-sm-10 align-self-center text-center">
-                <button type="submit" class="btn btn-success">Dar de Baja</button>
-                    <button type="submit" class="btn btn-success">Eliminar</button>
-                    <a href="{{ route('search') }}" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-success">Agregar</button>
+                    <a href="search.php" class="btn btn-danger">Cancelar</a>
                 </div>
             </div>
 
@@ -111,7 +115,8 @@ include 'plantilla.top.php';
       <!-- /.card -->
   </div>
 </div>
+<script type="text/javascript" src="js/recordValidaciones.js"></script>
 <?php
-print "<!-- Bottom -->";
-include 'plantilla.bottom.php';
+echo "<!-- Bottom -->";
+require_once 'view/plantillas/bottom.php';
 ?>
